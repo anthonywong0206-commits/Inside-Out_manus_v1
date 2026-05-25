@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { RefreshCw } from 'lucide-react'
 import EmotionCharacter from '../components/EmotionCharacter'
 import CreateMemoryModal from '../components/CreateMemoryModal'
 import { emotions } from '../data/emotions'
@@ -22,10 +21,10 @@ const CreatePage = ({ onSave }) => {
   }
 
   return (
-    <div className="h-full flex flex-col items-center justify-center px-6 relative overflow-hidden">
+    <div className="h-full flex flex-col px-6 pt-12 pb-28 overflow-y-auto">
       {/* Header */}
       <motion.div
-        className="text-center mb-8"
+        className="text-center mb-10 flex-shrink-0"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -38,15 +37,15 @@ const CreatePage = ({ onSave }) => {
         <p className="text-white/50 text-sm">每段回憶，都值得被收藏。</p>
       </motion.div>
 
-      {/* Emotion characters grid */}
+      {/* Emotion characters */}
       <motion.div
-        className="grid grid-cols-3 gap-6 sm:gap-8 mb-8"
+        className="flex-1 flex flex-col items-center justify-center gap-8"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
         {/* Row 1: Joy and Anger */}
-        <div className="col-span-3 flex justify-center gap-12 sm:gap-16">
+        <div className="flex justify-center gap-12 sm:gap-16">
           {emotions.slice(0, 2).map((emotion) => (
             <div key={emotion.id} className="flex flex-col items-center gap-2">
               <EmotionCharacter
@@ -69,7 +68,7 @@ const CreatePage = ({ onSave }) => {
         </div>
 
         {/* Row 2: Sadness, Fear, Disgust */}
-        <div className="col-span-3 flex justify-center gap-8 sm:gap-12">
+        <div className="flex justify-center gap-8 sm:gap-12">
           {emotions.slice(2).map((emotion) => (
             <div key={emotion.id} className="flex flex-col items-center gap-2">
               <EmotionCharacter

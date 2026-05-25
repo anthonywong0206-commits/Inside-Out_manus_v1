@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ParticleBackground from './components/ParticleBackground'
 import BottomNav from './components/BottomNav'
@@ -20,10 +20,10 @@ function App() {
   const { memories, addMemory, updateMemory, deleteMemory } = useMemoryStore()
   const [isLoading, setIsLoading] = useState(true)
 
-  // Simulate loading
-  useState(() => {
-    setTimeout(() => setIsLoading(false), 1500)
-  })
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1500)
+    return () => clearTimeout(timer)
+  }, [])
 
   if (isLoading) {
     return (
