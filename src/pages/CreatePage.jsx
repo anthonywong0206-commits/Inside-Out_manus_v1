@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Plus } from 'lucide-react'
 import EmotionCharacter from '../components/EmotionCharacter'
 import CreateMemoryModal from '../components/CreateMemoryModal'
 import { emotions } from '../data/emotions'
@@ -14,6 +15,11 @@ const CreatePage = ({ onSave }) => {
     setShowModal(true)
   }
 
+  const handleQuickCreate = () => {
+    setSelectedEmotion('joy')
+    setShowModal(true)
+  }
+
   const handleSave = (memory) => {
     onSave(memory)
     setShowSuccess(true)
@@ -22,19 +28,32 @@ const CreatePage = ({ onSave }) => {
 
   return (
     <div className="h-full flex flex-col px-6 pt-10 pb-4 overflow-y-auto">
-      {/* Header */}
+      {/* Header with + button */}
       <motion.div
-        className="text-center mb-8 flex-shrink-0"
+        className="flex items-start justify-between mb-8 flex-shrink-0"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">
-          今天，
-          <br />
-          你留下了什麼情緒？
-        </h1>
-        <p className="text-white/50 text-sm">每段回憶，都值得被收藏。</p>
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">
+            今天，
+            <br />
+            你留下了什麼情緒？
+          </h1>
+          <p className="text-white/50 text-sm">每段回憶，都值得被收藏。</p>
+        </div>
+
+        {/* + Button in top-right */}
+        <motion.button
+          onClick={handleQuickCreate}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center backdrop-blur-sm flex-shrink-0 mt-1"
+          style={{ boxShadow: '0 0 12px rgba(255,255,255,0.1)' }}
+        >
+          <Plus size={22} className="text-white/80" />
+        </motion.button>
       </motion.div>
 
       {/* Emotion characters */}
