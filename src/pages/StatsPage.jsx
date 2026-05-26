@@ -52,7 +52,6 @@ const StatsPage = ({ memories }) => {
     const trendData = []
 
     if (timeRange === 'year') {
-      // Monthly grouping
       for (let i = 11; i >= 0; i--) {
         const monthStart = new Date(now.getFullYear(), now.getMonth() - i, 1)
         const monthEnd = new Date(now.getFullYear(), now.getMonth() - i + 1, 0)
@@ -100,7 +99,7 @@ const StatsPage = ({ memories }) => {
   const mostCommonEmotion = stats.mostCommon ? getEmotionById(stats.mostCommon) : null
 
   return (
-    <div className="h-full overflow-y-auto pb-24 px-4 pt-4">
+    <div className="h-full overflow-y-auto pb-4 px-4 pt-4">
       {/* Header */}
       <motion.div
         className="flex items-center justify-between mb-4"

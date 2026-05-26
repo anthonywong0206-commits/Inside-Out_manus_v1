@@ -15,7 +15,7 @@ const CalendarPage = ({ memories, onDelete }) => {
     const start = startOfMonth(currentMonth)
     const end = endOfMonth(currentMonth)
     const days = eachDayOfInterval({ start, end })
-    const startDayOfWeek = getDay(start) // 0 = Sunday
+    const startDayOfWeek = getDay(start)
     const paddedDays = Array(startDayOfWeek).fill(null).concat(days)
     return paddedDays
   }, [currentMonth])
@@ -29,7 +29,6 @@ const CalendarPage = ({ memories, onDelete }) => {
   const getDominantEmotion = (date) => {
     const dayMemories = getMemoriesForDate(date)
     if (dayMemories.length === 0) return null
-    // Get most frequent emotion for the day
     const counts = {}
     dayMemories.forEach(m => { counts[m.emotion] = (counts[m.emotion] || 0) + 1 })
     const dominant = Object.entries(counts).sort((a, b) => b[1] - a[1])[0]
@@ -41,7 +40,7 @@ const CalendarPage = ({ memories, onDelete }) => {
   const weekDays = ['日', '一', '二', '三', '四', '五', '六']
 
   return (
-    <div className="h-full overflow-y-auto pb-24 px-4 pt-4">
+    <div className="h-full overflow-y-auto pb-4 px-4 pt-4">
       {/* Header */}
       <motion.div
         className="flex items-center justify-between mb-4"
@@ -94,7 +93,6 @@ const CalendarPage = ({ memories, onDelete }) => {
             const emotion = getDominantEmotion(day)
             const isToday = isSameDay(day, new Date())
             const isSelected = selectedDate && isSameDay(day, selectedDate)
-            const hasMemories = getMemoriesForDate(day).length > 0
 
             return (
               <motion.button

@@ -21,10 +21,10 @@ const CreatePage = ({ onSave }) => {
   }
 
   return (
-    <div className="h-full flex flex-col px-6 pt-12 pb-28 overflow-y-auto">
+    <div className="h-full flex flex-col px-6 pt-10 pb-4 overflow-y-auto">
       {/* Header */}
       <motion.div
-        className="text-center mb-10 flex-shrink-0"
+        className="text-center mb-8 flex-shrink-0"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

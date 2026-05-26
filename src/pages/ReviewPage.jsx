@@ -1,11 +1,10 @@
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Sparkles, Share2, Download } from 'lucide-react'
 import { format } from 'date-fns'
 import { zhTW } from 'date-fns/locale'
 import { getEmotionById, getRandomQuote, emotions } from '../data/emotions'
 import html2canvas from 'html2canvas'
-import { useRef } from 'react'
 
 const ReviewPage = ({ memories }) => {
   const cardRef = useRef(null)
@@ -69,7 +68,7 @@ const ReviewPage = ({ memories }) => {
   const today = new Date()
 
   return (
-    <div className="h-full overflow-y-auto pb-24 px-4 pt-4">
+    <div className="h-full overflow-y-auto pb-4 px-4 pt-4">
       {/* Header */}
       <motion.div
         className="flex items-center justify-between mb-4"

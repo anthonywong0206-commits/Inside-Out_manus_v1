@@ -11,12 +11,12 @@ const navItems = [
 
 const BottomNav = ({ currentPage, onNavigate }) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-4">
+    <div className="px-4 pb-4 pt-2">
       <motion.nav
         initial={{ y: 100 }}
         animate={{ y: 0 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="glass-strong rounded-2xl mx-auto max-w-md flex items-center justify-around py-2 px-2"
+        className="glass-strong rounded-2xl flex items-center justify-around py-2 px-2"
       >
         {navItems.map((item) => {
           const Icon = item.icon

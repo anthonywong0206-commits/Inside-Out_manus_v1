@@ -87,27 +87,31 @@ function App() {
   }
 
   return (
-    <div className="h-screen w-screen overflow-hidden relative max-w-md mx-auto">
+    <div className="h-screen w-screen flex flex-col relative max-w-md mx-auto">
       {/* Particle background */}
       <ParticleBackground />
 
-      {/* Main content */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentPage}
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{ duration: 0.3, ease: 'easeOut' }}
-          className="relative z-10 h-full"
-        >
-          {renderPage()}
-        </motion.div>
-      </AnimatePresence>
+      {/* Main content area - takes all remaining space above nav */}
+      <div className="flex-1 min-h-0 relative z-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPage}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="h-full"
+          >
+            {renderPage()}
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      {/* Bottom navigation */}
-      <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+      {/* Bottom navigation - fixed height, never overlaps content */}
+      <div className="flex-shrink-0 relative z-50">
+        <BottomNav currentPage={currentPage} onNavigate={setCurrentPage} />
+      </div>
     </div>
   )
 }
